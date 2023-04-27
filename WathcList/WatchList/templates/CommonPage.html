@@ -1,0 +1,44 @@
+<!--网站基础模板-->
+
+<!--获取视图函数中的提示信息-->
+{% for message in get_flashed_messages() %}
+    <div class="alert">{{ message }}</div>
+{% endfor %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Title {% endblock %} </title>
+    <link rel="icon" href="{{url_for('statics', filename='img/site_logo.jpg')}}"> <!-- 动态设置站点logo图像 -->
+    <link rel="stylesheet" href="{{url_for('statics', filename='css/homepage.css')}}" type="text/css">  <!--动态引入css样式文件-->
+</head>
+<body>
+   <!-- 头部区域的导航 -->
+   {% block header %}
+       <div class="header">
+           <ul>
+               <li>首页</li>
+               <li>最近新闻</li>
+               <li>最新产品</li>
+               <li>人力需求</li>
+               <li>联系我们</li>
+           </ul>
+            <p><a href="{{ url_for('details', username='star') }}">打开详情页（模板引擎方式跳转页面，并传递参数username）</a></p>
+            <p><a href="/usercenter">用户：{{user.name}}</a></p>
+            <p><a href="/login">登录|注册</a></p>
+       </div>
+   {% endblock %}
+
+   {% block content %}
+       <div class="content">主体页面内容</div>
+   {% endblock %}
+
+   {% block footer %}
+       <div class="footer">
+            底部区域，Made by PeterCao,2020.联系方式：caoln2003@126.com
+       </div>
+   {% endblock %}
+</body>
+</html>

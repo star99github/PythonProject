@@ -1,0 +1,17 @@
+
+{% extends 'CommonPage.html' %}<!--继承基础模板-->
+
+<!--替换基础模板中的block名称相同部分的内容-->
+{% block content %}
+<p>这是首页页面内容,由服务器传递过来：{{username}}</p>
+<div>
+    <!--如果session中用户名不为空，则显示指定用户名及注销链接，否则显示默认用户和登录链接-->
+    {% if session['username'] != ''  %}
+        <a href="#">当前用户：{{ session['username']}}</a>
+        <a href="#">注销</a>
+    {% else %}
+        <a href="#">default</a>
+        <a href="/login">去登录</a>
+    {% endif %}
+</div>
+{% endblock %}
