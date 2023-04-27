@@ -28,7 +28,8 @@ Flask蓝图(blueprint)类：
 from flask import request, url_for, session, Response, Blueprint, render_template, Flask, g, flash
 from werkzeug.utils import redirect
 from markupsafe import escape
-from flask_login import login_required, LoginManager,
+from flask_login import login_required, LoginManager
+from .models import User
 
 
 app = Flask(__name__)  # 实例化并命名为app实例
